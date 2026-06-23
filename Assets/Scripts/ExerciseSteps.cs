@@ -12,6 +12,7 @@ public class ExperimentStep
 {
     public List<ActionType> PossibleActions;
     public ActionType RequiredAction;
+    public string StepName;
     public string InstructionText;
 
     public virtual void ResetStep()

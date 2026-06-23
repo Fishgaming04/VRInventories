@@ -37,17 +37,30 @@ public class ExperimentSingleton : MonoBehaviour
         ApplicationQuitting = true;
     }
     #endregion
-
+    public event Action OnExperimentStarted;
     public event Action<ExperimentStep> OnStepStarted;
     public event Action<float> OnStepCompleted;
+    public event Action WrongActionSelected;
 
+    public event Action<string> LoggerEvent;
 
     private List<ExperimentStep> steps;
     private int currentIndex;
     private float stepStartTime;
 
+
+    private void Start()
+    {
+        Debug.Log("ExperimentSingleton started.");
+        Logger logger = new Logger();
+        logger.stetup();
+    }
+
+
     public void StartExperiment(List<ExperimentStep> orderedSteps)
     {
+        OnExperimentStarted?.Invoke();
+        LoggerEvent?.Invoke("Experiment started.");
         steps = orderedSteps;
         currentIndex = 0;
         StartStep();
@@ -57,6 +70,7 @@ public class ExperimentSingleton : MonoBehaviour
     {
         steps[currentIndex].ResetStep();
         OnStepStarted?.Invoke(steps[currentIndex]);
+        LoggerEvent?.Invoke($"Step started: {steps[currentIndex].StepName}");
         stepStartTime = Time.time;
     }
 
@@ -66,11 +80,13 @@ public class ExperimentSingleton : MonoBehaviour
 
         if (action != currentStep.RequiredAction)
         {
+            LoggerEvent?.Invoke($"Wrong action selected: {action}. Required: {currentStep.RequiredAction}");
             return;
         }
 
         float reactionTime = Time.time - stepStartTime;
         OnStepCompleted?.Invoke(reactionTime);
+        LoggerEvent?.Invoke($"Step completed: {currentStep.StepName}. Reaction time: {reactionTime} seconds.");
 
         currentIndex++;
         if (currentIndex < steps.Count)
@@ -78,5 +94,8 @@ public class ExperimentSingleton : MonoBehaviour
             StartStep();
         }
     }
+
+
+
 
 }
