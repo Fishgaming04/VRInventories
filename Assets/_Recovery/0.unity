@@ -1358,18 +1358,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8656097160526065774, guid: cb9e0deefcee2fd4890f32f083befefd, type: 3}
-      propertyPath: Experiments.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656097160526065774, guid: cb9e0deefcee2fd4890f32f083befefd, type: 3}
-      propertyPath: 'Experiments.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: ddacbdcf60538a945af6d8c61b28d40f, type: 2}
-    - target: {fileID: 8656097160526065774, guid: cb9e0deefcee2fd4890f32f083befefd, type: 3}
-      propertyPath: 'Experiments.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: c8c23847075cbe24dbcb58f96e7db901, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

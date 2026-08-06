@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 1317033011925362597}
   - component: {fileID: 8520275501331345305}
   - component: {fileID: 5192761572318140058}
+  - component: {fileID: 8322421842110665130}
   m_Layer: 0
   m_Name: Socket
   m_TagString: Untagged
@@ -193,3 +194,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8322421842110665130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417491215137221404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d7e32a914cfc44b48fb6f8d1cf12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotBelt
+  ItemAmount: 0

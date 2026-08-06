@@ -44,6 +44,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5448795026799518062}
+  - component: {fileID: 4063934516575276931}
   m_Layer: 0
   m_Name: Belt
   m_TagString: Untagged
@@ -67,6 +68,24 @@ Transform:
   - {fileID: 1952042630440197672}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4063934516575276931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896712306556876683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee827927f8d45248a10965701545994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  Slots:
+  - {fileID: 3808451076643088351}
+  - {fileID: 5568747574828130298}
+  - {fileID: 4907822992936803718}
+  - {fileID: 6224734394550133302}
+  ItemSpawnLocation: {fileID: 0}
 --- !u!1001 &2674465698073572252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,6 +148,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1317033011925362597, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}
   m_PrefabInstance: {fileID: 2674465698073572252}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6224734394550133302 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8322421842110665130, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}
+  m_PrefabInstance: {fileID: 2674465698073572252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d7e32a914cfc44b48fb6f8d1cf12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotBelt
 --- !u!1001 &3991096986014796844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -191,6 +221,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1317033011925362597, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}
   m_PrefabInstance: {fileID: 3991096986014796844}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4907822992936803718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8322421842110665130, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}
+  m_PrefabInstance: {fileID: 3991096986014796844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d7e32a914cfc44b48fb6f8d1cf12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotBelt
 --- !u!1001 &4483057419156950608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,6 +294,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1317033011925362597, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}
   m_PrefabInstance: {fileID: 4483057419156950608}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5568747574828130298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8322421842110665130, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}
+  m_PrefabInstance: {fileID: 4483057419156950608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d7e32a914cfc44b48fb6f8d1cf12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotBelt
 --- !u!1001 &5162665044340029045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -310,6 +362,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}
+--- !u!114 &3808451076643088351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8322421842110665130, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}
+  m_PrefabInstance: {fileID: 5162665044340029045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d7e32a914cfc44b48fb6f8d1cf12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotBelt
 --- !u!4 &6188634228984418768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1317033011925362597, guid: fa0979f6be64d914692b2cd827a51f20, type: 3}

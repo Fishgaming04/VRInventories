@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ExperimentSingleton : MonoBehaviour
+public class ExerciseSingleton : MonoBehaviour
 {
     #region SINGLETON INSTANCE
-    private static ExperimentSingleton _instance;
-    public static ExperimentSingleton Instance
+    private static ExerciseSingleton _instance;
+    public static ExerciseSingleton Instance
     {
         get
         {
             if (_instance == null && !ApplicationQuitting)
             {
-                _instance = FindObjectOfType<ExperimentSingleton>();
+                _instance = FindObjectOfType<ExerciseSingleton>();
                 if (_instance == null)
                 {
                     GameObject newInstance = new GameObject("Singleton_ExerciseSingleton");
-                    _instance = newInstance.AddComponent<ExperimentSingleton>();
+                    _instance = newInstance.AddComponent<ExerciseSingleton>();
                 }
             }
             return _instance;
@@ -37,12 +37,13 @@ public class ExperimentSingleton : MonoBehaviour
         ApplicationQuitting = true;
     }
     #endregion
-    public event Action OnExperimentStarted;
+    public event Action<Experiment> OnExperimentStarted;
     public event Action<ExperimentStep> OnStepStarted;
     public event Action<float> OnStepCompleted;
     public event Action WrongActionSelected;
 
     public event Action<string> LoggerEvent;
+
 
     private List<ExperimentStep> steps;
     private int currentIndex;
@@ -53,24 +54,35 @@ public class ExperimentSingleton : MonoBehaviour
     {
         Debug.Log("ExperimentSingleton started.");
         Logger logger = new Logger();
-        logger.stetup();
+        logger.setup();
+        //StartExperiment();
     }
 
-
-    public void StartExperiment(List<ExperimentStep> orderedSteps)
+    public void StartExperiment(Experiment currentExperimtent)
     {
-        OnExperimentStarted?.Invoke();
+        if (currentExperimtent == null)
+        {
+            LoggerEvent?.Invoke("No experiments available to start.");
+            return;
+        }
+        OnExperimentStarted?.Invoke(currentExperimtent);
         LoggerEvent?.Invoke("Experiment started.");
-        steps = orderedSteps;
+        if (currentExperimtent.OrderedSteps.Count == 0 || currentExperimtent.OrderedSteps[0] == null)
+        {
+            currentExperimtent.generateExperiment();
+        }
+        steps = currentExperimtent.OrderedSteps;
+        currentExperimtent.SetupExperiment();
         currentIndex = 0;
-        StartStep();
+        //StartStep();
     }
 
-    private void StartStep()
+    public void StartStep()
     {
-        steps[currentIndex].ResetStep();
+        //steps[currentIndex].ResetStep();
         OnStepStarted?.Invoke(steps[currentIndex]);
         LoggerEvent?.Invoke($"Step started: {steps[currentIndex].StepName}");
+        steps[currentIndex].ResetStep();
         stepStartTime = Time.time;
     }
 

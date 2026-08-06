@@ -13,15 +13,25 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Transform ItemSpawnLocation;
 
-
+ 
     private void Start()
     {
+        SystemInverntoryAcessSignleton.Instance.clearInventory += ClearInventory;
+        SystemInverntoryAcessSignleton.Instance.addItem += AddItem;
+        SystemInverntoryAcessSignleton.Instance.removeItem += RemoveItemNoReturn;
+
+
         foreach (InventorySlot slot in Slots)
         {
             slot.ItemSpawnLocation = ItemSpawnLocation;
         }
     }
 
+
+    public void AddItem(ItemInfo itemInfo)
+    {
+        AddItem(itemInfo, 1);
+    }
 
     public void AddItem(ItemInfo itemInfo, int amount)
     {
@@ -53,6 +63,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void RemoveItemNoReturn(ItemInfo itemInfo)
+    {
+        RemoveItem(itemInfo);
+    }
+
     public bool RemoveItem(ItemInfo itemInfo)
     {
         foreach (InventorySlot slot in Slots)
@@ -69,5 +84,14 @@ public class Inventory : MonoBehaviour
             }
         }
        return false;
+    }
+
+    public void ClearInventory()
+    {
+        foreach (InventorySlot slot in Slots)
+        {
+            slot.ForceSetItem(null, 0);
+            slot.ItemAmount = 0;
+        }
     }
 }

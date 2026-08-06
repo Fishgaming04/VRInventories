@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 2565460494344369053}
   - component: {fileID: 607333867355985817}
   - component: {fileID: 5656388440740456536}
-  - component: {fileID: 4428509345535507794}
+  - component: {fileID: 6967344921177721858}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -578,9 +578,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4428509345535507794}
+      - m_Target: {fileID: 6967344921177721858}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
-        m_MethodName: TakeItem
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -785,7 +785,7 @@ MonoBehaviour:
   m_MinDistance: 0.15
   m_ClampToMaxDistance: 1
   m_MaxDistance: 0
---- !u!114 &4428509345535507794
+--- !u!114 &6967344921177721858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -794,8 +794,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7975500378523854106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78cfcbf5d543af4db965ab16e1a47ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e087d5c23558194a97922a5d3ea9e0e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlot
-  IconImage: {fileID: 5364059138313299801}
+  m_EditorClassIdentifier: Assembly-CSharp::InventorySlotButton
   ItemAmount: 0
+  IconImage: {fileID: 5364059138313299801}

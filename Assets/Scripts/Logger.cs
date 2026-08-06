@@ -9,21 +9,25 @@ using System;
 #if UNITY_EDITOR
 public class Logger
 {
+
+
+    private string logDirectory;
     private string logFilePath;
-
-
-    public void stetup()
+    public void setup()
     {
-        logFilePath = new DirectoryInfo(Application.dataPath).ToString() + "/Logs";
+        logDirectory = Path.Combine(Application.dataPath, "Logs");
 
-        if (!Directory.Exists(logFilePath))
+        if (!Directory.Exists(logDirectory))
         {
-            Directory.CreateDirectory(logFilePath);
-            Debug.Log($"Created directory: {logFilePath}");
+            Directory.CreateDirectory(logDirectory);
+            Debug.Log($"Created directory: {logDirectory}");
         }
-        Debug.Log("Data Path: " + logFilePath);
-        
-        ExperimentSingleton.Instance.LoggerEvent += logger;
+
+        logFilePath = Path.Combine(logDirectory, "Log" + DateTime.Now.ToString("dd-MM-yyyy-HHmmss") + ".txt");
+
+        Debug.Log("Log file: " + logFilePath);
+
+        ExerciseSingleton.Instance.LoggerEvent += logger;
 
     }
 

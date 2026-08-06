@@ -7,7 +7,7 @@ public class BaseAction : MonoBehaviour
 
     public void ActionUsed()
     {
-        ExperimentSingleton.Instance.SubmitSelection(actionType);
+        ExerciseSingleton.Instance.SubmitSelection(actionType);
     }
 
 }

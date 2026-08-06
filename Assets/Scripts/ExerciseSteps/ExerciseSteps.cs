@@ -8,12 +8,14 @@ public enum ActionType
     Stamina,
 }
 
-public class ExperimentStep
+
+//[CreateAssetMenu(menuName = "ExperimentSteps/BaseExperimentStep")]
+public class ExperimentStep : ScriptableObject
 {
     public List<ActionType> PossibleActions;
     public ActionType RequiredAction;
     public string StepName;
-    public string InstructionText;
+    public Sprite icon;
 
     public virtual void ResetStep()
     {
