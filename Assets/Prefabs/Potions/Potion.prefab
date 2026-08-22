@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 6800306700765146680}
   - component: {fileID: 4988123503277720359}
   - component: {fileID: 885305021591384094}
+  - component: {fileID: -2056114461667126174}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Untagged
@@ -318,7 +319,7 @@ MonoBehaviour:
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
-  m_RetainTransformParent: 1
+  m_RetainTransformParent: 0
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
@@ -327,6 +328,18 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &-2056114461667126174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4198980284919871892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85414198bc2bc3489b4840ff3793efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &7556133173355481239
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +576,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9128039422421558880}
   - component: {fileID: 5767567837131318829}
-  - component: {fileID: 8885716681089372213}
   - component: {fileID: 6105309521006913424}
   - component: {fileID: 2611425192349609843}
   m_Layer: 0
@@ -609,19 +621,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.08
   m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &8885716681089372213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8623063607417149164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b31f02e09e85b4419a0a09c0717859b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseAction
-  actionType: 0
 --- !u!114 &6105309521006913424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aac8bd1a0aa26041acfd82596497ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  action: {fileID: 8885716681089372213}
+  actionType: 0
   fullPotionBody: {fileID: 7614764585705334906}
   emptyPotionBody: {fileID: 55152532725274497}
   iteminfoHolder: {fileID: 6105309521006913424}

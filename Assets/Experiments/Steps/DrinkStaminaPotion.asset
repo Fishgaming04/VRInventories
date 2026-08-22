@@ -17,6 +17,6 @@ MonoBehaviour:
   StepName: DrinkStaminaPotion
   icon: {fileID: 21300000, guid: effedf064e90e614e929d34c74dd00fc, type: 3}
   Items:
-  - {fileID: 11400000, guid: 9eec09bfe0d3c8c4bbcebd6b9cb6e8fb, type: 2}
-  - {fileID: 11400000, guid: 79350e0eaa949264ea6f535b6c2cadc3, type: 2}
   - {fileID: 11400000, guid: ab0d77993d65ac64bbe100ca4016cd6f, type: 2}
+  - {fileID: 11400000, guid: 79350e0eaa949264ea6f535b6c2cadc3, type: 2}
+  - {fileID: 11400000, guid: 9eec09bfe0d3c8c4bbcebd6b9cb6e8fb, type: 2}

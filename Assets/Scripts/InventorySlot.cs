@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
+    public static event Action<string> LoggerEvent;
+
     public int ItemAmount;
     protected ItemInfo itemInformation;
 
@@ -56,6 +59,14 @@ public class InventorySlot : MonoBehaviour
 
     public virtual void ForceSetItem(ItemInfo itemInfo, int amount)
     {
+        if (itemInfo == null)
+        {
+            amount = 0;
+        }
+        else
+        {
+            LoggerEvent?.Invoke($"Forcing item: {itemInfo.Name} with amount: {amount}");
+        }
         this.ItemAmount = amount;
         this.itemInformation = itemInfo;
     }
@@ -66,6 +77,7 @@ public class InventorySlot : MonoBehaviour
         {
             this.itemInformation = itemInfo;
             this.ItemAmount = amount;
+            LoggerEvent?.Invoke($"Setting item: {itemInformation.Name} with amount: {ItemAmount}");
             return true;
         }
         else
@@ -74,4 +86,18 @@ public class InventorySlot : MonoBehaviour
             return false;
         }
     }
+
+    public virtual void TakeItem()
+    {
+        if (this.itemInformation == null)
+        {
+            return;
+        }
+        LoggerEvent?.Invoke($"Taking item: {itemInformation.Name}");
+        if (ItemAmount <= 0)
+        {
+            itemInformation = null;
+        }   
+    }
+
 }

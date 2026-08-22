@@ -9,10 +9,6 @@ using static UnityEngine.XR.OpenXR.Features.Interactions.HandInteractionProfile;
 [RequireComponent(typeof(XRSocketInteractor))]
 public class InventorySlotBelt : InventorySlot
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    ///private GameObject itemInSocket;
-
-    //private Collider slotCollider;
     private XRSocketInteractor socketInteractor;
 
 
@@ -21,6 +17,7 @@ public class InventorySlotBelt : InventorySlot
         //slotCollider = GetComponent<Collider>();
         socketInteractor = GetComponent<XRSocketInteractor>();
         socketInteractor.selectEntered.AddListener(ItemAddedToBelt);
+        socketInteractor.selectExited.AddListener(ItemRemovedFromBelt);
     }
 
     public override void ForceSetItem(ItemInfo itemInfo, int amount)
@@ -30,15 +27,17 @@ public class InventorySlotBelt : InventorySlot
             Debug.LogWarning("The maximum amount is 1");
         }
         base.ForceSetItem(itemInfo, 1);
-        if (socketInteractor.hasSelection)
+        //log the item name to the console if null print null;
+        //if (socketInteractor.hasSelection)
+        IXRSelectInteractable selectedItem = socketInteractor.firstInteractableSelected;
+        if (selectedItem != null)
         {
-            IXRSelectInteractable selectedItem = socketInteractor.firstInteractableSelected;
-            ItemInfo CurrentItemInfo = selectedItem.transform.gameObject.GetComponent<Item>().Info;
+            ItemInfo CurrentItemInfo = selectedItem.transform.gameObject.GetComponentInChildren<Item>().Info;
             if (CurrentItemInfo != itemInfo)
             {
                 socketInteractor.interactionManager.SelectExit(socketInteractor, selectedItem);
                 Destroy(selectedItem.transform.gameObject);
-                if (itemInfo.Prefab != null)
+                if (itemInfo != null)
                 {
                     Instantiate(itemInfo.Prefab, socketInteractor.attachTransform);
                 }
@@ -59,15 +58,14 @@ public class InventorySlotBelt : InventorySlot
             Debug.LogWarning("ItemInfo is null. Cannot set item.");
             return false;
         }
-        if (amount < 1)
+        if (amount > 1)
         {
             Debug.LogWarning("The maximum amount is 1");
         }
         if (!socketInteractor.hasSelection)
         {
-            //IXRSelectInteractable selectedItem = socketInteractor.firstInteractableSelected;
-            //ItemInfo CurrentItemInfo = selectedItem.transform.gameObject.GetComponent<Item>().Info;
-           Instantiate(itemInfo.Prefab, socketInteractor.attachTransform);
+            itemInformation = null;
+            Instantiate(itemInfo.Prefab, socketInteractor.attachTransform);
             base.SetItem(itemInfo, 1);
             
             return true;
@@ -78,15 +76,36 @@ public class InventorySlotBelt : InventorySlot
     public void ItemAddedToBelt(SelectEnterEventArgs args)
     {
         Item item = args.interactableObject.transform.gameObject.GetComponentInChildren<Item>();
-        if (item == null)
+        if (!item)
         {
             Debug.LogWarning("The object added to the belt does not have an Item component.");
             return;
         }
+        //itemInformation = item.Info;
         SystemInverntoryAcessSignleton.Instance.AddItem(item.Info);
     }
 
+    public void ItemRemovedFromBelt(SelectExitEventArgs args)
+    {
+        if (!itemInformation)
+        {
+            Item item = args.interactableObject.transform.gameObject.GetComponentInChildren<Item>();
+            if (!item)
+            {
+                Debug.LogWarning("The object taken from the belt does not have an Item component.");
+                return;
+            }
+            itemInformation = item.Info;
+        }
+        TakeItem();
+    }
 
+
+    public override void TakeItem()
+    {
+        ItemAmount = 0;
+        base.TakeItem();
+    }
 
 
     //public void OnCollisionEnter(Collision collision)

@@ -26,7 +26,7 @@ public class Experiment : ScriptableObject
     public void generateExperiment()
     {
         orderedSteps.Clear();
-        for (int i = 0; i < NumberOfSteps; i++)
+        while (orderedSteps.Count < NumberOfSteps)
         {
             int randomIndex = Random.Range(0, PossibleSteps.Count);
             orderedSteps.Add(PossibleSteps[randomIndex]);

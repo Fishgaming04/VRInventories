@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54350bdce2ab8a7468537353b9d66763, type: 3}
+  m_Name: PotionDrinking_M_B_F
+  m_EditorClassIdentifier: Assembly-CSharp::ExperimentDrinkPotion
+  Name: Potion drinking MBFN
+  Description: Drink the potion shown on screen
+  NumberOfSteps: 16
+  PossibleSteps:
+  - {fileID: 11400000, guid: e58ee30df96afae469f56863aff84513, type: 2}
+  - {fileID: 11400000, guid: 68d4312193676c648b22d3174b931131, type: 2}
+  - {fileID: 11400000, guid: e711ca1636d42714592d82e4e7243db1, type: 2}
+  useBeltInventory: 1
+  MultimodelEnabled: 1
+  ButtonPressItemUse: 0

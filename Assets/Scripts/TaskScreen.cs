@@ -18,11 +18,15 @@ public class TaskScreen : MonoBehaviour
 
     private bool isStartExeperiment = true;
 
+
+    private string startNextExperimentText = "Press Start to begin the next experiment";
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ExerciseSingleton.Instance.OnStepStarted += UpdateScreenStep;
         ExerciseSingleton.Instance.OnExperimentStarted += UpdateScreenExperimentStart;
+        ExerciseSingleton.Instance.OnExperimentEnded += ExperimentEnded;
     }
 
     private void UpdateScreenStep(ExperimentStep step)
@@ -46,7 +50,6 @@ public class TaskScreen : MonoBehaviour
             taskImage.enabled = true;
             taskImage.texture = step.icon.texture;
         }
-
     }
 
 
@@ -76,16 +79,23 @@ public class TaskScreen : MonoBehaviour
                 Debug.LogError("TaskKeeper reference is not set in TaskScreen.");
                 return;
             }
-            taskKeeper.StartExperiment();
             isStartExeperiment = false;
+            taskKeeper.StartExperiment();
         }
         else
         {
             isStartExeperiment = true;
-            ExerciseSingleton.Instance.StartStep();
             StartButton.SetActive(false);
+            ExerciseSingleton.Instance.StartStep();
         }
     }
 
-
+    public void ExperimentEnded()
+    {
+        isStartExeperiment = true;
+        StartButton.SetActive(true);
+        taskImage.enabled = false;
+        taskDisplay.enabled = true;
+        taskDisplay.text = startNextExperimentText;
+    }
 }

@@ -12,11 +12,11 @@ public class ItemInventoryMenuStep : ExperimentStep
         SystemInverntoryAcessSignleton.Instance.ClearInventory();
         List<ItemInfo> shuffled = Items;
 
-        for (int i = shuffled.Count - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            (shuffled[i], shuffled[j]) = (shuffled[j], shuffled[i]);
-        }
+        //for (int i = shuffled.Count - 1; i > 0; i--)
+        //{
+        //    int j = Random.Range(0, i + 1);
+        //    (shuffled[i], shuffled[j]) = (shuffled[j], shuffled[i]);
+        //}
 
         foreach (ItemInfo item in shuffled)
         {

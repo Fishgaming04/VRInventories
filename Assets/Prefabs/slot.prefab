@@ -579,8 +579,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6967344921177721858}
-        m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: InventorySlotButton, Assembly-CSharp
+        m_MethodName: TakeItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

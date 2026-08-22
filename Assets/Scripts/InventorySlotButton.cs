@@ -21,6 +21,7 @@ public class InventorySlotButton : InventorySlot
 
     public override bool SetItem(ItemInfo itemInfo, int amount)
     {
+        Debug.Log("set item buttonbased on base");
         if (base.SetItem(itemInfo, amount))
         {
             IconImage.texture = itemInfo.Icon.texture;
@@ -32,8 +33,9 @@ public class InventorySlotButton : InventorySlot
     
 
 
-    public void TakeItem()
+    public override void TakeItem()
     {
+        base.TakeItem();
         if (this.ItemAmount > 0)
         {
             Debug.Log($"Taking item: {itemInformation.Name}");

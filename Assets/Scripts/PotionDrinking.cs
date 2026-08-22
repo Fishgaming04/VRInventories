@@ -2,11 +2,8 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Collider))]
-public class PotionDrinking : MonoBehaviour
+public class PotionDrinking : BaseAction
 {
-    [SerializeField]
-    private BaseAction action;
-
     [SerializeField]
     private GameObject fullPotionBody;
 
@@ -23,6 +20,8 @@ public class PotionDrinking : MonoBehaviour
     private Collider drinkingCollider;
     private const string playerTag = "MainCamera";
 
+    public static bool DrinkWithButtonPress = false;
+
     private void Start()
     {
         drinkingCollider = GetComponent<Collider>();
@@ -31,19 +30,26 @@ public class PotionDrinking : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isEmpty)
+        if (isEmpty || DrinkWithButtonPress)
         {
             return;
         }
         if (other.CompareTag(playerTag))
         {
-            fullPotionBody.SetActive(false);
-            emptyPotionBody.SetActive(true);
-            iteminfoHolder.Info = emptyItemInfo;
-            isEmpty = true;
-            action.ActionUsed();
+            ActionUsed();
         }
     }
 
-
+    public override void ActionUsed()
+    {
+        if (isEmpty)
+        {
+            return;
+        }
+        fullPotionBody.SetActive(false);
+        emptyPotionBody.SetActive(true);
+        iteminfoHolder.Info = emptyItemInfo;
+        isEmpty = true;
+        base.ActionUsed();
+    }
 }

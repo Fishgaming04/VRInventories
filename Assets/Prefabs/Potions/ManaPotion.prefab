@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: Info
       value: 
       objectReference: {fileID: 11400000, guid: 9eec09bfe0d3c8c4bbcebd6b9cb6e8fb, type: 2}
+    - target: {fileID: 2611425192349609843, guid: d456de638ca609c4089f0405b527bf13, type: 3}
+      propertyPath: actionType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4198980284919871892, guid: d456de638ca609c4089f0405b527bf13, type: 3}
       propertyPath: m_Name
       value: ManaPotion

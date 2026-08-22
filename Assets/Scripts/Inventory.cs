@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Transform ItemSpawnLocation;
 
- 
+    private bool isInventoryEnabled = true;
     private void Start()
     {
         SystemInverntoryAcessSignleton.Instance.clearInventory += ClearInventory;
@@ -27,6 +27,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void DisableInventory(bool disable)
+    {
+        isInventoryEnabled = !disable;
+    }
+
 
     public void AddItem(ItemInfo itemInfo)
     {
@@ -35,12 +40,18 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemInfo itemInfo, int amount)
     {
+        if (!isInventoryEnabled)
+        {
+            return;
+        }
+
         if (itemInfo == null)
         {
             Debug.LogError("Cannot add null item to inventory.");
             return;
         }
         // Check if the item already exists in the inventory
+        Debug.Log("Invneotry Set potion to " + (itemInfo != null ? itemInfo.Name : "null"));
         foreach (InventorySlot slot in Slots)
         {
             if (slot == itemInfo)
@@ -70,6 +81,10 @@ public class Inventory : MonoBehaviour
 
     public bool RemoveItem(ItemInfo itemInfo)
     {
+        if (!isInventoryEnabled)
+        {
+            return false;
+        }
         foreach (InventorySlot slot in Slots)
         {
             if (slot == itemInfo)
